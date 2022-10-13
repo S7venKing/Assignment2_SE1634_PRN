@@ -11,6 +11,7 @@ namespace Assignment2_SE1634
         FlowLayoutPanel flpnShop = new FlowLayoutPanel();
         AlbumDAO albumDAO = new AlbumDAO();
         ArtistDAO artistDAO = new ArtistDAO();
+        User user { get; set; }
         public List<Album> albums { get; set; }
         public int page { get; set; }
         public MainGUI()
@@ -32,6 +33,7 @@ namespace Assignment2_SE1634
             cbGenre.DisplayMember = "Name";
             flpnShop.Location = new Point(22, 120);
             flpnShop.Size = new Size(941, 338);
+            //Bat dau load shoppingGui page = 1 , list de phan trang la all 
             page = 1;
             albums = albumDAO.LoadAllAlbum();
             Page(page,albums); 
@@ -39,10 +41,15 @@ namespace Assignment2_SE1634
 
         void Page(int page,List<Album> listA)
         {
-
+            //Clear page cu - them page moi vao gui
             flpnShop.Controls.Clear();
             plnShop.Controls.Add(flpnShop);
+
+            //listA : Chon list de phan trang - All/Theo Genre
+            //LoadPaginationAlbum - Lay ra 3 san pham bat dau tu page  
             List<Album> list = albumDAO.LoadPaginationAlbum(page, 3, listA);
+            
+            //Button Next and Previous
             if (page == 1)
             {
                 btnPrev.Enabled = false;
@@ -69,16 +76,18 @@ namespace Assignment2_SE1634
             {
                 btnNext.Enabled = true;
             }
+            //Button Next and Previous
 
-            foreach (var album in list)
-            {
+            //voi moi san pham trong list( 3 san pham da phan trang ) tao them 1 group box
+            foreach (var album in list) 
+            {   //Cau hinh cac thanh phan cua group box - picture,artist,price,addcart
                 PictureBox pic = new PictureBox();
                 Label price = new Label();
                 Label artist = new Label();
                 Button addCart = new Button();
                 GroupBox grb = new GroupBox();
                 grb.Size = new Size(305, 325);
-                pic.BackColor = Color.Blue;
+                pic.ImageLocation = Path.Combine(System.Windows.Forms.Application.StartupPath, "Resources\\Image\\1.jpg");
                 artist.TextAlign = ContentAlignment.MiddleCenter;
                 price.TextAlign = ContentAlignment.MiddleCenter;
                 grb.Controls.Add(pic);
@@ -87,6 +96,7 @@ namespace Assignment2_SE1634
                 grb.Controls.Add(addCart);
                 pic.Location = new Point(60, 39);
                 pic.Size = new Size(187, 82);
+                pic.SizeMode = PictureBoxSizeMode.StretchImage;
                 price.Location = new Point(106, 141);
                 artist.Location = new Point(106, 176);
                 addCart.Location = new Point(75, 245);
