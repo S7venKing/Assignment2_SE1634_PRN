@@ -29,5 +29,13 @@ namespace Assignment2_SE1634.DAO
             var listPage = list.Where(p=>p.GenreId==genreID).ToList();
             return listPage;
         }
+
+        public List<Album> LoadAlbumByTitle(string search)
+        {
+            var list = new List<Album>();
+            list = LoadAllAlbum();
+            var listPage = list.Where(p => p.Title.Contains(search)).ToList();
+            return listPage;
+        }
     }
 }

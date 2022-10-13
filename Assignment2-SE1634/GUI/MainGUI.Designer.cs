@@ -31,11 +31,12 @@
             this.cbGenre = new System.Windows.Forms.ComboBox();
             this.lbGenre = new System.Windows.Forms.Label();
             this.Title = new System.Windows.Forms.Label();
-            this.txbSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnPrev = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.plnShop = new System.Windows.Forms.Panel();
+            this.cbTitle = new System.Windows.Forms.ComboBox();
+            this.btnAll = new System.Windows.Forms.Button();
             this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
             this.lbCart = new System.Windows.Forms.Label();
             this.lbShopping = new System.Windows.Forms.Label();
@@ -46,7 +47,7 @@
             // cbGenre
             // 
             this.cbGenre.FormattingEnabled = true;
-            this.cbGenre.Location = new System.Drawing.Point(151, 50);
+            this.cbGenre.Location = new System.Drawing.Point(114, 47);
             this.cbGenre.Name = "cbGenre";
             this.cbGenre.Size = new System.Drawing.Size(258, 28);
             this.cbGenre.TabIndex = 0;
@@ -55,7 +56,7 @@
             // lbGenre
             // 
             this.lbGenre.AutoSize = true;
-            this.lbGenre.Location = new System.Drawing.Point(88, 53);
+            this.lbGenre.Location = new System.Drawing.Point(57, 50);
             this.lbGenre.Name = "lbGenre";
             this.lbGenre.Size = new System.Drawing.Size(51, 20);
             this.lbGenre.TabIndex = 1;
@@ -64,28 +65,21 @@
             // Title
             // 
             this.Title.AutoSize = true;
-            this.Title.Location = new System.Drawing.Point(456, 54);
+            this.Title.Location = new System.Drawing.Point(545, 50);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(38, 20);
             this.Title.TabIndex = 3;
             this.Title.Text = "Title";
             // 
-            // txbSearch
-            // 
-            this.txbSearch.Location = new System.Drawing.Point(513, 51);
-            this.txbSearch.Multiline = true;
-            this.txbSearch.Name = "txbSearch";
-            this.txbSearch.Size = new System.Drawing.Size(255, 28);
-            this.txbSearch.TabIndex = 4;
-            // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(774, 48);
+            this.btnSearch.Location = new System.Drawing.Point(850, 46);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(94, 31);
+            this.btnSearch.Size = new System.Drawing.Size(119, 31);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnPrev
             // 
@@ -109,10 +103,11 @@
             // 
             // plnShop
             // 
+            this.plnShop.Controls.Add(this.cbTitle);
+            this.plnShop.Controls.Add(this.btnAll);
             this.plnShop.Controls.Add(this.btnNext);
             this.plnShop.Controls.Add(this.btnPrev);
             this.plnShop.Controls.Add(this.btnSearch);
-            this.plnShop.Controls.Add(this.txbSearch);
             this.plnShop.Controls.Add(this.Title);
             this.plnShop.Controls.Add(this.lbGenre);
             this.plnShop.Controls.Add(this.cbGenre);
@@ -121,6 +116,25 @@
             this.plnShop.Size = new System.Drawing.Size(1007, 549);
             this.plnShop.TabIndex = 1;
             this.plnShop.Visible = false;
+            // 
+            // cbTitle
+            // 
+            this.cbTitle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbTitle.FormattingEnabled = true;
+            this.cbTitle.Location = new System.Drawing.Point(589, 47);
+            this.cbTitle.Name = "cbTitle";
+            this.cbTitle.Size = new System.Drawing.Size(258, 28);
+            this.cbTitle.TabIndex = 10;
+            // 
+            // btnAll
+            // 
+            this.btnAll.Location = new System.Drawing.Point(378, 47);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(119, 29);
+            this.btnAll.TabIndex = 9;
+            this.btnAll.Text = "All Products";
+            this.btnAll.UseVisualStyleBackColor = true;
+            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
             // 
             // sqlCommandBuilder1
             // 
@@ -179,7 +193,6 @@
         private ComboBox cbGenre;
         private Label lbGenre;
         private Label Title;
-        private TextBox txbSearch;
         private Button btnSearch;
         private Button btnPrev;
         private Button btnNext;
@@ -188,5 +201,7 @@
         private Label lbCart;
         private Label lbShopping;
         private Label lbLogin;
+        private Button btnAll;
+        private ComboBox cbTitle;
     }
 }

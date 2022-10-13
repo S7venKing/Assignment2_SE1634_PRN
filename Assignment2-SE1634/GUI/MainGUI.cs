@@ -31,6 +31,11 @@ namespace Assignment2_SE1634
             MusicStoreContext music = new MusicStoreContext();
             cbGenre.DataSource = music.Genres.ToList();
             cbGenre.DisplayMember = "Name";
+            cbTitle.DataSource = music.Albums.ToList();
+            cbTitle.DisplayMember = "Title";
+            cbTitle.ValueMember = "Title";
+            cbTitle.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbTitle.AutoCompleteMode = AutoCompleteMode.SuggestAppend; 
             flpnShop.Location = new Point(22, 120);
             flpnShop.Size = new Size(941, 338);
             //Bat dau load shoppingGui page = 1 , list de phan trang la all 
@@ -87,7 +92,7 @@ namespace Assignment2_SE1634
                 Button addCart = new Button();
                 GroupBox grb = new GroupBox();
                 grb.Size = new Size(305, 325);
-                pic.ImageLocation = Path.Combine(System.Windows.Forms.Application.StartupPath, "Resources\\Image\\1.jpg");
+                pic.ImageLocation = Path.Combine(System.Windows.Forms.Application.StartupPath, "Resources\\Image\\gohan.jpg");
                 artist.TextAlign = ContentAlignment.MiddleCenter;
                 price.TextAlign = ContentAlignment.MiddleCenter;
                 grb.Controls.Add(pic);
@@ -136,6 +141,18 @@ namespace Assignment2_SE1634
                 Page(page, albums);
             }
 
+        }
+
+        private void btnAll_Click(object sender, EventArgs e)
+        {
+            LoadShop();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            page = 1;
+            albums = albumDAO.LoadAlbumByTitle(cbTitle.Text);
+            Page(page, albums);
         }
     }
 }
