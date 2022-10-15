@@ -9,10 +9,11 @@ namespace Assignment2_SE1634.DAO
 {
     internal class AlbumDAO
     {
+
         public List<Album> LoadAllAlbum()
         {
-            var list = new List<Album>();
             MusicStoreContext musicStore = new MusicStoreContext();
+            List<Album> list = new List<Album>();
             list = musicStore.Albums.ToList();
             return list;
         }
@@ -36,6 +37,26 @@ namespace Assignment2_SE1634.DAO
             list = LoadAllAlbum();
             var listPage = list.Where(p => p.Title.Contains(search)).ToList();
             return listPage;
+        }
+
+        public void Delete(int id)
+        {
+            var list = new List<Album>();
+            list = LoadAllAlbum();
+            Album albums = list.Where(p => p.AlbumId == id).FirstOrDefault();
+            MusicStoreContext musicStore = new MusicStoreContext();
+            try
+            {   
+                musicStore.Remove(albums);
+                musicStore.SaveChanges();
+                MessageBox.Show("That album is deleted");
+            }
+            catch
+            {
+                MessageBox.Show("Album is ordered");
+            }
+
+
         }
     }
 }

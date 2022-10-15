@@ -216,5 +216,24 @@ namespace Assignment2_SE1634
         {
             
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "Delete")
+            {
+                DialogResult res = MessageBox.Show("Do you want to delete", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (res == DialogResult.Yes)
+                {
+                    AlbumDAO dao = new AlbumDAO();
+                    dao.Delete((int)dataGridView1.Rows[e.RowIndex].Cells["albumId"].Value);
+                    
+                    dataGridView1.DataSource = dao.LoadAllAlbum();
+                }
+                if (res == DialogResult.No)
+                {
+
+                }
+            }
+        }
     }
 }

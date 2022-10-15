@@ -48,12 +48,12 @@
             this.lblLog = new System.Windows.Forms.Label();
             this.sqlConnection1 = new Microsoft.Data.SqlClient.SqlConnection();
             this.lbAdmin = new System.Windows.Forms.Label();
-            this.albumIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genreIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.artistIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.albumUrlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.albumId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genreId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.artistId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleAlbum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.albumUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artistDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cartsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -154,12 +154,12 @@
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.albumIdDataGridViewTextBoxColumn,
-            this.genreIdDataGridViewTextBoxColumn,
-            this.artistIdDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn,
-            this.albumUrlDataGridViewTextBoxColumn,
+            this.albumId,
+            this.genreId,
+            this.artistId,
+            this.titleAlbum,
+            this.price,
+            this.albumUrl,
             this.artistDataGridViewTextBoxColumn,
             this.genreDataGridViewTextBoxColumn,
             this.cartsDataGridViewTextBoxColumn,
@@ -167,12 +167,13 @@
             this.Edit,
             this.Delete});
             this.dataGridView1.DataSource = this.albumBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 147);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 133);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.Size = new System.Drawing.Size(975, 429);
             this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // albumBindingSource
             // 
@@ -255,53 +256,53 @@
             this.lbAdmin.Text = "Albums";
             this.lbAdmin.Click += new System.EventHandler(this.lbAdmin_Click);
             // 
-            // albumIdDataGridViewTextBoxColumn
+            // albumId
             // 
-            this.albumIdDataGridViewTextBoxColumn.DataPropertyName = "AlbumId";
-            this.albumIdDataGridViewTextBoxColumn.HeaderText = "AlbumId";
-            this.albumIdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.albumIdDataGridViewTextBoxColumn.Name = "albumIdDataGridViewTextBoxColumn";
-            this.albumIdDataGridViewTextBoxColumn.Width = 125;
+            this.albumId.DataPropertyName = "AlbumId";
+            this.albumId.HeaderText = "AlbumId";
+            this.albumId.MinimumWidth = 6;
+            this.albumId.Name = "albumId";
+            this.albumId.Width = 125;
             // 
-            // genreIdDataGridViewTextBoxColumn
+            // genreId
             // 
-            this.genreIdDataGridViewTextBoxColumn.DataPropertyName = "GenreId";
-            this.genreIdDataGridViewTextBoxColumn.HeaderText = "GenreId";
-            this.genreIdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.genreIdDataGridViewTextBoxColumn.Name = "genreIdDataGridViewTextBoxColumn";
-            this.genreIdDataGridViewTextBoxColumn.Width = 125;
+            this.genreId.DataPropertyName = "GenreId";
+            this.genreId.HeaderText = "GenreId";
+            this.genreId.MinimumWidth = 6;
+            this.genreId.Name = "genreId";
+            this.genreId.Width = 125;
             // 
-            // artistIdDataGridViewTextBoxColumn
+            // artistId
             // 
-            this.artistIdDataGridViewTextBoxColumn.DataPropertyName = "ArtistId";
-            this.artistIdDataGridViewTextBoxColumn.HeaderText = "ArtistId";
-            this.artistIdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.artistIdDataGridViewTextBoxColumn.Name = "artistIdDataGridViewTextBoxColumn";
-            this.artistIdDataGridViewTextBoxColumn.Width = 125;
+            this.artistId.DataPropertyName = "ArtistId";
+            this.artistId.HeaderText = "ArtistId";
+            this.artistId.MinimumWidth = 6;
+            this.artistId.Name = "artistId";
+            this.artistId.Width = 125;
             // 
-            // titleDataGridViewTextBoxColumn
+            // titleAlbum
             // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.Width = 125;
+            this.titleAlbum.DataPropertyName = "Title";
+            this.titleAlbum.HeaderText = "Title";
+            this.titleAlbum.MinimumWidth = 6;
+            this.titleAlbum.Name = "titleAlbum";
+            this.titleAlbum.Width = 125;
             // 
-            // priceDataGridViewTextBoxColumn
+            // price
             // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.Width = 125;
+            this.price.DataPropertyName = "Price";
+            this.price.HeaderText = "Price";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.Width = 125;
             // 
-            // albumUrlDataGridViewTextBoxColumn
+            // albumUrl
             // 
-            this.albumUrlDataGridViewTextBoxColumn.DataPropertyName = "AlbumUrl";
-            this.albumUrlDataGridViewTextBoxColumn.HeaderText = "AlbumUrl";
-            this.albumUrlDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.albumUrlDataGridViewTextBoxColumn.Name = "albumUrlDataGridViewTextBoxColumn";
-            this.albumUrlDataGridViewTextBoxColumn.Width = 125;
+            this.albumUrl.DataPropertyName = "AlbumUrl";
+            this.albumUrl.HeaderText = "AlbumUrl";
+            this.albumUrl.MinimumWidth = 6;
+            this.albumUrl.Name = "albumUrl";
+            this.albumUrl.Width = 125;
             // 
             // artistDataGridViewTextBoxColumn
             // 
@@ -415,5 +416,11 @@
         private DataGridViewTextBoxColumn orderDetailsDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn Edit;
         private DataGridViewButtonColumn Delete;
+        private DataGridViewTextBoxColumn albumId;
+        private DataGridViewTextBoxColumn genreId;
+        private DataGridViewTextBoxColumn artistId;
+        private DataGridViewTextBoxColumn titleAlbum;
+        private DataGridViewTextBoxColumn price;
+        private DataGridViewTextBoxColumn albumUrl;
     }
     }
