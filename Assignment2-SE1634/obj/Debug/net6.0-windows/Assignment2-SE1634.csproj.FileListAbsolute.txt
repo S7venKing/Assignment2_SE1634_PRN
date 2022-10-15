@@ -121,3 +121,4 @@ I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Ass
 I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2-SE1634.genruntimeconfig.cache
 I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\ref\Assignment2-SE1634.dll
 I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2_SE1634.Properties.Resources.resources
+I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2_SE1634.UserGUI.resources
