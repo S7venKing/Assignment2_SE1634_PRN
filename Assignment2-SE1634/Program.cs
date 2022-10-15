@@ -1,3 +1,5 @@
+using Assignment2_SE1634.GUI;
+
 namespace Assignment2_SE1634
 {
     internal static class Program
@@ -11,7 +13,8 @@ namespace Assignment2_SE1634
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new UserGUI(null));
+            //Application.Run(new UserGUI(null));
+            Application.Run(new TestUpLoadImage());
         }
     }
-}
+    }

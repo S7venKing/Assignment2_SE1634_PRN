@@ -18,6 +18,7 @@ namespace Assignment2_SE1634
         public UserGUI(User user)
         {
             InitializeComponent();
+            MessageBox.Show(Application.StartupPath);
             this.user = user;
             
                 if (this.user != null)
@@ -137,7 +138,8 @@ namespace Assignment2_SE1634
                 Button addCart = new Button();
                 GroupBox grb = new GroupBox();
                 grb.Size = new Size(305, 325);
-                pic.ImageLocation = Path.Combine(System.Windows.Forms.Application.StartupPath, "Resources\\Image\\gohan.jpg");
+                
+                pic.ImageLocation = Path.Combine(Application.StartupPath, $"Resources{album.AlbumUrl}");
                 artist.TextAlign = ContentAlignment.MiddleCenter;
                 price.TextAlign = ContentAlignment.MiddleCenter;
                 grb.Controls.Add(pic);
