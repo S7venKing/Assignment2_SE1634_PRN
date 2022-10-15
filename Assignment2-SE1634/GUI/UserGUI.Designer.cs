@@ -1,6 +1,6 @@
 ﻿namespace Assignment2_SE1634
 {
-    partial class MainGUI
+    partial class UserGUI
     {
         /// <summary>
         ///  Required designer variable.
@@ -42,6 +42,7 @@
             this.lbShopping = new System.Windows.Forms.Label();
             this.sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             this.lblLog = new System.Windows.Forms.Label();
+            this.sqlConnection1 = new Microsoft.Data.SqlClient.SqlConnection();
             this.plnShop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,9 +113,9 @@
             this.plnShop.Controls.Add(this.Title);
             this.plnShop.Controls.Add(this.lbGenre);
             this.plnShop.Controls.Add(this.cbGenre);
-            this.plnShop.Location = new System.Drawing.Point(2, 111);
+            this.plnShop.Location = new System.Drawing.Point(12, 166);
             this.plnShop.Name = "plnShop";
-            this.plnShop.Size = new System.Drawing.Size(1007, 549);
+            this.plnShop.Size = new System.Drawing.Size(1007, 525);
             this.plnShop.TabIndex = 1;
             this.plnShop.Visible = false;
             // 
@@ -146,7 +147,7 @@
             // lbCart
             // 
             this.lbCart.AutoSize = true;
-            this.lbCart.Location = new System.Drawing.Point(127, 22);
+            this.lbCart.Location = new System.Drawing.Point(126, 22);
             this.lbCart.Name = "lbCart";
             this.lbCart.Size = new System.Drawing.Size(36, 20);
             this.lbCart.TabIndex = 1;
@@ -174,21 +175,27 @@
             this.lblLog.AutoSize = true;
             this.lblLog.Location = new System.Drawing.Point(208, 22);
             this.lblLog.Name = "lblLog";
-            this.lblLog.Size = new System.Drawing.Size(46, 20);
+            this.lblLog.Size = new System.Drawing.Size(56, 20);
             this.lblLog.TabIndex = 2;
-            this.lblLog.Text = "Login";
-            this.lblLog.Click += new System.EventHandler(this.lblLog_Click);
+            this.lblLog.Text = "Logout";
             // 
-            // MainGUI
+            // sqlConnection1
+            // 
+            this.sqlConnection1.AccessToken = null;
+            this.sqlConnection1.Credential = null;
+            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
+            this.sqlConnection1.StatisticsEnabled = false;
+            // 
+            // UserGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(997, 712);
+            this.ClientSize = new System.Drawing.Size(1030, 712);
             this.Controls.Add(this.lblLog);
             this.Controls.Add(this.lbShopping);
             this.Controls.Add(this.lbCart);
             this.Controls.Add(this.plnShop);
-            this.Name = "MainGUI";
+            this.Name = "UserGUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainGUI";
             this.plnShop.ResumeLayout(false);
@@ -213,5 +220,6 @@
         private ComboBox cbTitle;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private Label lblLog;
+        private Microsoft.Data.SqlClient.SqlConnection sqlConnection1;
     }
-}
+    }

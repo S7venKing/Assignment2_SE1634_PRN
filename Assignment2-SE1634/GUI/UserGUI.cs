@@ -7,24 +7,48 @@ using System.Xml.Schema;
 namespace Assignment2_SE1634
 {
 
-    public partial class MainGUI : Form
+    public partial class UserGUI : Form
     {
         FlowLayoutPanel flpnShop = new FlowLayoutPanel();
         AlbumDAO albumDAO = new AlbumDAO();
         ArtistDAO artistDAO = new ArtistDAO();
-     
         public List<Album> albums { get; set; }
         public int page { get; set; }
-
-
-        public MainGUI()
+        public User user { get; set; }
+        public UserGUI(User user)
         {
             InitializeComponent();
+            this.user = user;
+            
+                if (this.user != null)
+                {
+                    lblLog.Text = $"Logout({this.user.UserName})";
+                    lblLog.Click += lbLogout_Click;
+            }
+                else
+                {
+                    lblLog.Text = "Login";
+                    lblLog.Click += lbLogin_Click;
+
+            }
+            
             LoadShop(); 
         }
 
+        private void lbLogin_Click(object sender, EventArgs e)
+        {
+            LoginGUI login = new LoginGUI();
+            login.form = this;
+            login.Show();
+            this.Hide();
+        }
 
-
+        private void lbLogout_Click(object sender, EventArgs e)
+        {
+            UserGUI user = new UserGUI(null);
+            user.Show();
+            this.Close();
+        }
         private void lbShopping_Click(object sender, EventArgs e)
         {
             plnShop.Visible = true;
@@ -33,7 +57,7 @@ namespace Assignment2_SE1634
 
         void LoadShop()
         {
-
+          
             MusicStoreContext music = new MusicStoreContext();
             cbGenre.DataSource = music.Genres.ToList();
             cbGenre.DisplayMember = "Name";
@@ -50,19 +74,8 @@ namespace Assignment2_SE1634
             Page(page,albums); 
         }
 
-        private void lbLogout_Click(object? sender, EventArgs e)
-        {
 
-        }
-        private void lbLogin_Click(object sender, EventArgs e)
-        {
-            LoginGUI gui = new LoginGUI();
-            gui.form = this;
-            this.Hide();
-            gui.ShowDialog();
-            
 
-        }
 
         void Page(int page,List<Album> listA)
         {
@@ -175,12 +188,6 @@ namespace Assignment2_SE1634
             Page(page, albums);
         }
 
-        private void lblLog_Click(object sender, EventArgs e)
-        {
-            LoginGUI login = new LoginGUI();
-            login.Show();
-            login.form = this;
-            this.Hide();
-        }
+
     }
 }
