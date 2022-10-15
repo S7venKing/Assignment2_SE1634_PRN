@@ -26,11 +26,11 @@ namespace Assignment2_SE1634.GUI
             User user = dao.GetUserByUsernameAndPassword(txbUser.Text, txbPass.Text);
             if (user != null)
             {
+                this.Hide();
                 UserGUI userGUI = new UserGUI(user);
-                userGUI.Show();
-                this.Close();
+                userGUI.ShowDialog();
                 
-                
+                 
             }
             else
             {
@@ -41,7 +41,7 @@ namespace Assignment2_SE1634.GUI
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-            form.Show();
+            
         }
     }
 }

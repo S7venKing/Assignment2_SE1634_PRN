@@ -113,7 +113,11 @@
             this.Controls.Add(this.txbUser);
             this.Controls.Add(this.lbPass);
             this.Controls.Add(this.lbUser);
+            this.MaximizeBox = false;
+            this.MdiChildrenMinimizedAnchorBottom = false;
+            this.MinimizeBox = false;
             this.Name = "LoginGUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginGUI";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -38,16 +38,6 @@
             this.plnShop = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.albumBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cbTitle = new System.Windows.Forms.ComboBox();
-            this.btnAll = new System.Windows.Forms.Button();
-            this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
-            this.lbCart = new System.Windows.Forms.Label();
-            this.lbShopping = new System.Windows.Forms.Label();
-            this.sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
-            this.lblLog = new System.Windows.Forms.Label();
-            this.sqlConnection1 = new Microsoft.Data.SqlClient.SqlConnection();
-            this.lbAdmin = new System.Windows.Forms.Label();
             this.albumId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.genreId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.artistId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +50,16 @@
             this.orderDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.albumBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cbTitle = new System.Windows.Forms.ComboBox();
+            this.btnAll = new System.Windows.Forms.Button();
+            this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
+            this.lbCart = new System.Windows.Forms.Label();
+            this.lbShopping = new System.Windows.Forms.Label();
+            this.sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
+            this.lblLog = new System.Windows.Forms.Label();
+            this.sqlConnection1 = new Microsoft.Data.SqlClient.SqlConnection();
+            this.lbAdmin = new System.Windows.Forms.Label();
             this.plnShop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).BeginInit();
@@ -148,6 +148,7 @@
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Create a new Album";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
             // dataGridView1
             // 
@@ -174,87 +175,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(975, 429);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // albumBindingSource
-            // 
-            this.albumBindingSource.DataSource = typeof(Assignment2_SE1634.Models.Album);
-            // 
-            // cbTitle
-            // 
-            this.cbTitle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbTitle.FormattingEnabled = true;
-            this.cbTitle.Location = new System.Drawing.Point(593, 16);
-            this.cbTitle.Name = "cbTitle";
-            this.cbTitle.Size = new System.Drawing.Size(258, 28);
-            this.cbTitle.TabIndex = 10;
-            // 
-            // btnAll
-            // 
-            this.btnAll.Location = new System.Drawing.Point(387, 16);
-            this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(119, 29);
-            this.btnAll.TabIndex = 9;
-            this.btnAll.Text = "All Products";
-            this.btnAll.UseVisualStyleBackColor = true;
-            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
-            // 
-            // sqlCommandBuilder1
-            // 
-            this.sqlCommandBuilder1.DataAdapter = null;
-            this.sqlCommandBuilder1.QuotePrefix = "[";
-            this.sqlCommandBuilder1.QuoteSuffix = "]";
-            // 
-            // lbCart
-            // 
-            this.lbCart.AutoSize = true;
-            this.lbCart.Location = new System.Drawing.Point(126, 22);
-            this.lbCart.Name = "lbCart";
-            this.lbCart.Size = new System.Drawing.Size(36, 20);
-            this.lbCart.TabIndex = 1;
-            this.lbCart.Text = "Cart";
-            // 
-            // lbShopping
-            // 
-            this.lbShopping.AutoSize = true;
-            this.lbShopping.Location = new System.Drawing.Point(12, 20);
-            this.lbShopping.Name = "lbShopping";
-            this.lbShopping.Size = new System.Drawing.Size(73, 20);
-            this.lbShopping.TabIndex = 0;
-            this.lbShopping.Text = "Shopping";
-            this.lbShopping.Click += new System.EventHandler(this.lbShopping_Click);
-            // 
-            // sqlCommand1
-            // 
-            this.sqlCommand1.CommandTimeout = 30;
-            this.sqlCommand1.Connection = null;
-            this.sqlCommand1.Notification = null;
-            this.sqlCommand1.Transaction = null;
-            // 
-            // lblLog
-            // 
-            this.lblLog.AutoSize = true;
-            this.lblLog.Location = new System.Drawing.Point(208, 22);
-            this.lblLog.Name = "lblLog";
-            this.lblLog.Size = new System.Drawing.Size(56, 20);
-            this.lblLog.TabIndex = 2;
-            this.lblLog.Text = "Logout";
-            // 
-            // sqlConnection1
-            // 
-            this.sqlConnection1.AccessToken = null;
-            this.sqlConnection1.Credential = null;
-            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
-            this.sqlConnection1.StatisticsEnabled = false;
-            // 
-            // lbAdmin
-            // 
-            this.lbAdmin.AutoSize = true;
-            this.lbAdmin.Location = new System.Drawing.Point(346, 22);
-            this.lbAdmin.Name = "lbAdmin";
-            this.lbAdmin.Size = new System.Drawing.Size(59, 20);
-            this.lbAdmin.TabIndex = 3;
-            this.lbAdmin.Text = "Albums";
-            this.lbAdmin.Click += new System.EventHandler(this.lbAdmin_Click);
             // 
             // albumId
             // 
@@ -361,6 +281,87 @@
             this.Delete.Text = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
             this.Delete.Width = 125;
+            // 
+            // albumBindingSource
+            // 
+            this.albumBindingSource.DataSource = typeof(Assignment2_SE1634.Models.Album);
+            // 
+            // cbTitle
+            // 
+            this.cbTitle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbTitle.FormattingEnabled = true;
+            this.cbTitle.Location = new System.Drawing.Point(593, 16);
+            this.cbTitle.Name = "cbTitle";
+            this.cbTitle.Size = new System.Drawing.Size(258, 28);
+            this.cbTitle.TabIndex = 10;
+            // 
+            // btnAll
+            // 
+            this.btnAll.Location = new System.Drawing.Point(387, 16);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(119, 29);
+            this.btnAll.TabIndex = 9;
+            this.btnAll.Text = "All Products";
+            this.btnAll.UseVisualStyleBackColor = true;
+            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
+            // 
+            // sqlCommandBuilder1
+            // 
+            this.sqlCommandBuilder1.DataAdapter = null;
+            this.sqlCommandBuilder1.QuotePrefix = "[";
+            this.sqlCommandBuilder1.QuoteSuffix = "]";
+            // 
+            // lbCart
+            // 
+            this.lbCart.AutoSize = true;
+            this.lbCart.Location = new System.Drawing.Point(126, 22);
+            this.lbCart.Name = "lbCart";
+            this.lbCart.Size = new System.Drawing.Size(36, 20);
+            this.lbCart.TabIndex = 1;
+            this.lbCart.Text = "Cart";
+            // 
+            // lbShopping
+            // 
+            this.lbShopping.AutoSize = true;
+            this.lbShopping.Location = new System.Drawing.Point(12, 20);
+            this.lbShopping.Name = "lbShopping";
+            this.lbShopping.Size = new System.Drawing.Size(73, 20);
+            this.lbShopping.TabIndex = 0;
+            this.lbShopping.Text = "Shopping";
+            this.lbShopping.Click += new System.EventHandler(this.lbShopping_Click);
+            // 
+            // sqlCommand1
+            // 
+            this.sqlCommand1.CommandTimeout = 30;
+            this.sqlCommand1.Connection = null;
+            this.sqlCommand1.Notification = null;
+            this.sqlCommand1.Transaction = null;
+            // 
+            // lblLog
+            // 
+            this.lblLog.AutoSize = true;
+            this.lblLog.Location = new System.Drawing.Point(208, 22);
+            this.lblLog.Name = "lblLog";
+            this.lblLog.Size = new System.Drawing.Size(56, 20);
+            this.lblLog.TabIndex = 2;
+            this.lblLog.Text = "Logout";
+            // 
+            // sqlConnection1
+            // 
+            this.sqlConnection1.AccessToken = null;
+            this.sqlConnection1.Credential = null;
+            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
+            this.sqlConnection1.StatisticsEnabled = false;
+            // 
+            // lbAdmin
+            // 
+            this.lbAdmin.AutoSize = true;
+            this.lbAdmin.Location = new System.Drawing.Point(346, 22);
+            this.lbAdmin.Name = "lbAdmin";
+            this.lbAdmin.Size = new System.Drawing.Size(59, 20);
+            this.lbAdmin.TabIndex = 3;
+            this.lbAdmin.Text = "Albums";
+            this.lbAdmin.Click += new System.EventHandler(this.lbAdmin_Click);
             // 
             // UserGUI
             // 

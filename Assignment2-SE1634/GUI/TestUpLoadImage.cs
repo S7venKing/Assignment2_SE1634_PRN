@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assignment2_SE1634.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,9 +20,13 @@ namespace Assignment2_SE1634.GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //up load image cho albums 
             try
             {
                 OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Title = "Open Image file";
+                ofd.Filter = "Image Files (*.jpg;*.jpeg;*.png;.*gif)| *.jpg;*.jpeg;*.png;*.gif";
+
                 ofd.ShowDialog();
                 if (ofd.FileName == "")
                     return;
@@ -29,7 +34,7 @@ namespace Assignment2_SE1634.GUI
                 string[] str = filename.Split("\\");
                 pictureBox1.ImageLocation = filename;
                 MessageBox.Show(filename.ToString());
-                MessageBox.Show(Application.StartupPath);
+                //luu vao resources cua chuong trinh(Application.StartupPath(bin\.net 6) + "Resources\\Images\\" + str.Last()), luu duong dan cua resouces toi database(\\Images\\str.Last())
                 File.Copy(pictureBox1.ImageLocation, Application.StartupPath + "Resources\\Images\\" + str.Last(), true);
             }
             catch { }
@@ -37,7 +42,8 @@ namespace Assignment2_SE1634.GUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            pictureBox1.ImageLocation = Application.StartupPath + "Resources\\Images\\songoku.jpg";
+
+            pictureBox2.ImageLocation = pictureBox1.ImageLocation;
 
         }
     }

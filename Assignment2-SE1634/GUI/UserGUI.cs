@@ -47,16 +47,17 @@ namespace Assignment2_SE1634
 
         private void lbLogin_Click(object sender, EventArgs e)
         {
-            LoginGUI login = new LoginGUI();
-            login.form = this;
-            login.Show();
             this.Hide();
+            LoginGUI login = new LoginGUI();
+            login.ShowDialog();
+            this.Show();
+            
+
         }
 
         private void lbLogout_Click(object sender, EventArgs e)
         {
-            UserGUI user = new UserGUI(null);
-            user.Show();
+
             this.Close();
         }
         private void lbShopping_Click(object sender, EventArgs e)
@@ -235,7 +236,25 @@ namespace Assignment2_SE1634
                 {
 
                 }
+            }else if(dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
+            {
+               
+                AlbumAddEditGUI albumAE = new AlbumAddEditGUI("edit", (int)dataGridView1.Rows[e.RowIndex].Cells["albumId"].Value);
+                this.Hide();
+                albumAE.ShowDialog();
+                this.Show();
+
+
             }
+        }
+
+        private void btnAdd_Click_1(object sender, EventArgs e)
+        {
+            AlbumAddEditGUI albumAE = new AlbumAddEditGUI("add",-1);
+            this.Hide();
+            albumAE.ShowDialog();
+            this.Show();
+
         }
     }
 }
