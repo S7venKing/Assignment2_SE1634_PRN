@@ -107,8 +107,6 @@ I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\bin\Debug\net6.0-windows\run
 I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2-SE1634.csproj.AssemblyReference.cache
 I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2_SE1634.GUI.LoginGUI.resources
-I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2_SE1634.MainGUI.resources
-I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2_SE1634.GUI.ShoppingGUI.resources
 I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2-SE1634.csproj.GenerateResource.cache
 I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2-SE1634.GeneratedMSBuildEditorConfig.editorconfig
 I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2-SE1634.AssemblyInfoInputs.cache

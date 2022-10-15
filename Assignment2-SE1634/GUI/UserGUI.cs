@@ -22,11 +22,20 @@ namespace Assignment2_SE1634
             
                 if (this.user != null)
                 {
-                    lblLog.Text = $"Logout({this.user.UserName})";
-                    lblLog.Click += lbLogout_Click;
-            }
+                    if(this.user.Role == 1)
+                {
+                    lbAdmin.Visible = true;
+                }
                 else
                 {
+                    lbAdmin.Visible = false;
+                }
+                    lblLog.Text = $"Logout({this.user.UserName})";
+                    lblLog.Click += lbLogout_Click;
+                }
+                else
+                {
+                    lbAdmin.Visible = false;
                     lblLog.Text = "Login";
                     lblLog.Click += lbLogin_Click;
 
@@ -51,13 +60,15 @@ namespace Assignment2_SE1634
         }
         private void lbShopping_Click(object sender, EventArgs e)
         {
+            btnAdd.Visible = false;
             plnShop.Visible = true;
+            dataGridView1.Visible = false;
             
         }
 
         void LoadShop()
         {
-          
+            
             MusicStoreContext music = new MusicStoreContext();
             cbGenre.DataSource = music.Genres.ToList();
             cbGenre.DisplayMember = "Name";
@@ -66,11 +77,12 @@ namespace Assignment2_SE1634
             cbTitle.ValueMember = "Title";
             cbTitle.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbTitle.AutoCompleteMode = AutoCompleteMode.SuggestAppend; 
-            flpnShop.Location = new Point(22, 120);
+            flpnShop.Location = new Point(22, 150);
             flpnShop.Size = new Size(941, 338);
             //Bat dau load shoppingGui page = 1 , list de phan trang la all 
             page = 1;
             albums = albumDAO.LoadAllAlbum();
+            dataGridView1.DataSource = albumDAO.LoadAllAlbum();
             Page(page,albums); 
         }
 
@@ -172,6 +184,7 @@ namespace Assignment2_SE1634
                 Genre genre = (Genre)cb.SelectedValue;
                 albums = albumDAO.LoadAlbumByGenre(genre.GenreId);
                 Page(page, albums);
+                dataGridView1.DataSource = albumDAO.LoadAlbumByGenre(genre.GenreId);
             }
 
         }
@@ -179,15 +192,29 @@ namespace Assignment2_SE1634
         private void btnAll_Click(object sender, EventArgs e)
         {
             LoadShop();
+            dataGridView1.DataSource = albumDAO.LoadAllAlbum();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             page = 1;
             albums = albumDAO.LoadAlbumByTitle(cbTitle.Text);
+            dataGridView1.DataSource = albumDAO.LoadAlbumByTitle(cbTitle.Text);
             Page(page, albums);
         }
 
+        private void lbAdmin_Click(object sender, EventArgs e)
+        {
+            btnAdd.Visible = true;
+            btnAdd.Click += BtnAdd_Click;
+            plnShop.Visible = true;
+            dataGridView1.Visible = true;
+            dataGridView1.DataSource = albumDAO.LoadAllAlbum();
+        }
 
+        private void BtnAdd_Click(object? sender, EventArgs e)
+        {
+            
+        }
     }
 }
