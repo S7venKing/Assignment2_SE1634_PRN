@@ -67,7 +67,22 @@ namespace Assignment2_SE1634.DAO
 
 
         }
+        public void AddAlbums(Album album)
+        {
+            MusicStoreContext musicStore = new MusicStoreContext();
+            try
+            {
+                musicStore.Albums.Add(album);
+                musicStore.SaveChanges();
+                MessageBox.Show("That album is added");
+            }
+            catch
+            {
+                MessageBox.Show("Error");
+            }
 
+
+        }
 
     }
 }

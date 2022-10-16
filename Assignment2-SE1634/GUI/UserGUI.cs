@@ -18,7 +18,7 @@ namespace Assignment2_SE1634
         public UserGUI(User user)
         {
             InitializeComponent();
-            MessageBox.Show(Application.StartupPath);
+     
             this.user = user;
             
                 if (this.user != null)
@@ -41,8 +41,10 @@ namespace Assignment2_SE1634
                     lblLog.Click += lbLogin_Click;
 
             }
+            page = 1;
+            LoadShop();
+            //Bat dau load shoppingGui page = 1 , list de phan trang la all 
             
-            LoadShop(); 
         }
 
         private void lbLogin_Click(object sender, EventArgs e)
@@ -69,8 +71,7 @@ namespace Assignment2_SE1634
         }
 
         void LoadShop()
-        {
-            
+        { 
             MusicStoreContext music = new MusicStoreContext();
             cbGenre.DataSource = music.Genres.ToList();
             cbGenre.DisplayMember = "Name";
@@ -81,13 +82,15 @@ namespace Assignment2_SE1634
             cbTitle.AutoCompleteMode = AutoCompleteMode.SuggestAppend; 
             flpnShop.Location = new Point(22, 150);
             flpnShop.Size = new Size(941, 338);
-            //Bat dau load shoppingGui page = 1 , list de phan trang la all 
-            page = 1;
-            albums = albumDAO.LoadAllAlbum();
-            dataGridView1.DataSource = albumDAO.LoadAllAlbum();
+            BindingData();
             Page(page,albums); 
         }
 
+        public void BindingData() 
+        {
+            albums = albumDAO.LoadAllAlbum();
+            dataGridView1.DataSource = albumDAO.LoadAllAlbum();
+        }
 
 
 
@@ -239,21 +242,19 @@ namespace Assignment2_SE1634
             }else if(dataGridView1.Columns[e.ColumnIndex].Name == "Edit")
             {
                
-                AlbumAddEditGUI albumAE = new AlbumAddEditGUI("edit", (int)dataGridView1.Rows[e.RowIndex].Cells["albumId"].Value);
+                AlbumAddEditGUI albumAE = new AlbumAddEditGUI("edit", (int)dataGridView1.Rows[e.RowIndex].Cells["albumId"].Value,this);
                 this.Hide();
                 albumAE.ShowDialog();
-                this.Show();
-
-
+                albumAE.form = this;
             }
         }
 
         private void btnAdd_Click_1(object sender, EventArgs e)
         {
-            AlbumAddEditGUI albumAE = new AlbumAddEditGUI("add",-1);
+            AlbumAddEditGUI albumAE = new AlbumAddEditGUI("add",-1,this);
             this.Hide();
             albumAE.ShowDialog();
-            this.Show();
+            albumAE.form = this;
 
         }
     }

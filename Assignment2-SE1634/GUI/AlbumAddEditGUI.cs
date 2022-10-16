@@ -1,57 +1,57 @@
 ﻿using Assignment2_SE1634.DAO;
 using Assignment2_SE1634.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
 namespace Assignment2_SE1634.GUI
 {
     public partial class AlbumAddEditGUI : Form
     {
+        AlbumDAO dao = new AlbumDAO();
+        MusicStoreContext music = new MusicStoreContext();
         private string action;
         private int id;
-        public Form form;
+        public UserGUI form;
         public string Action { get => action; set => action = value; }
         public int Id { get => id; set => id = value; }
-        public AlbumAddEditGUI(string action, int id)
+        public AlbumAddEditGUI(string action, int id, UserGUI form)
         {
             InitializeComponent();
             this.action = action;
+            this.form = form;
             this.id = id;
-            MessageBox.Show(this.action + "," + this.id.ToString());
             LoadGUI();
-
-
         }
 
         void LoadGUI()
         {
-            AlbumDAO dao = new AlbumDAO();
+            
+            cbGenre.DataSource = music.Genres.ToList();
+            cbGenre.DisplayMember = "Name";
+            cbGenre.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            cbArtist.DataSource = music.Artists.ToList();
+            cbArtist.DisplayMember = "Name";
+            cbArtist.AutoCompleteSource = AutoCompleteSource.CustomSource;
             if (this.action == "edit")
             {
                 Album album = dao.LoadAlbumByID(this.id);
-                MusicStoreContext music = new MusicStoreContext();
                 cbArtist.Text = music.Artists.Where(p => p.ArtistId == album.ArtistId).FirstOrDefault().Name;
                 cbGenre.Text = music.Genres.Where(p => p.GenreId == album.GenreId).FirstOrDefault().Name;
-                cbGenre.DataSource = music.Genres.ToList();
-                cbGenre.DisplayMember = "Name";
-                cbGenre.ValueMember = "Name";
-                cbArtist.DataSource = music.Artists.ToList();
-                cbArtist.DisplayMember = "Name";
-                cbArtist.ValueMember = "Name";
-                cbArtist.AutoCompleteSource = AutoCompleteSource.ListItems;
-                cbArtist.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                cbGenre.AutoCompleteSource = AutoCompleteSource.ListItems;
-                cbGenre.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 txbPrice.Text = album.Price.ToString();
                 txbTitle.Text = album.Title;
                 pictureBox1.ImageLocation = Path.Combine(Application.StartupPath, $"Resources{album.AlbumUrl}");
+                txbImgUrl.Text = album.AlbumUrl;
             }
            
         }
@@ -60,6 +60,9 @@ namespace Assignment2_SE1634.GUI
         {
             
             this.Close();
+            this.form.BindingData();
+            this.form.Show();
+            
             
         }
 
@@ -77,11 +80,65 @@ namespace Assignment2_SE1634.GUI
                 string filename = ofd.FileName;
                 string[] str = filename.Split("\\");
                 pictureBox1.ImageLocation = filename;
-                MessageBox.Show(filename.ToString());
                 //luu vao resources cua chuong trinh(Application.StartupPath(bin\.net 6) + "Resources\\Images\\" + str.Last()), luu duong dan cua resouces toi database(\\Images\\str.Last())
                 File.Copy(pictureBox1.ImageLocation, Application.StartupPath + "Resources\\Images\\" + str.Last(), true);
+                txbImgUrl.Text = "\\Images\\" + str.Last();
             }
             catch { }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (this.action == "add")
+            {
+
+                AlbumDAO album = new AlbumDAO();
+                album.AddAlbums(new Album()
+                {
+                    GenreId = (int)cbGenre.Tag,
+                    ArtistId = (int)cbArtist.Tag,
+                    Price = Decimal.Parse(txbPrice.Text),
+                    Title = txbTitle.Text,
+                    AlbumUrl = txbImgUrl.Text,
+                });
+            }else if(this.action == "edit")
+            {
+                Album album = dao.LoadAlbumByID(this.id);
+                album.GenreId = (int)cbGenre.Tag;
+                album.ArtistId = (int)cbArtist.Tag;
+                album.Price = Decimal.Parse(txbPrice.Text);
+                album.Title = txbTitle.Text;
+                album.AlbumUrl = txbImgUrl.Text;
+                music.Entry(album).State = EntityState.Modified;
+            }
+            
+            music.SaveChanges();
+            this.Close();
+            this.form.BindingData();
+            this.form.Show();
+
+        }
+
+        private void cbGenre_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            if (cb.SelectedValue != null)
+            {
+                Genre genre = (Genre)cb.SelectedValue;
+                cb.Tag = genre.GenreId;
+                
+            }
+        }
+
+        private void cbArtist_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            if (cb.SelectedValue != null)
+            {
+                Artist artist = (Artist)cb.SelectedValue;
+                cb.Tag = artist.ArtistId;
+                
+            }
         }
     }
 }

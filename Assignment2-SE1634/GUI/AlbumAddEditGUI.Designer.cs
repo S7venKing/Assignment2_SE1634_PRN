@@ -38,7 +38,7 @@
             this.txbPrice = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnImage = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbImgUrl = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.Image = new System.Windows.Forms.Label();
@@ -88,6 +88,7 @@
             this.cbGenre.Name = "cbGenre";
             this.cbGenre.Size = new System.Drawing.Size(326, 28);
             this.cbGenre.TabIndex = 4;
+            this.cbGenre.SelectedValueChanged += new System.EventHandler(this.cbGenre_SelectedValueChanged);
             // 
             // cbArtist
             // 
@@ -96,6 +97,7 @@
             this.cbArtist.Name = "cbArtist";
             this.cbArtist.Size = new System.Drawing.Size(326, 28);
             this.cbArtist.TabIndex = 5;
+            this.cbArtist.SelectedValueChanged += new System.EventHandler(this.cbArtist_SelectedValueChanged);
             // 
             // txbTitle
             // 
@@ -130,12 +132,12 @@
             this.btnImage.UseVisualStyleBackColor = true;
             this.btnImage.Click += new System.EventHandler(this.btnImage_Click);
             // 
-            // textBox1
+            // txbImgUrl
             // 
-            this.textBox1.Location = new System.Drawing.Point(117, 303);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(191, 27);
-            this.textBox1.TabIndex = 10;
+            this.txbImgUrl.Location = new System.Drawing.Point(117, 303);
+            this.txbImgUrl.Name = "txbImgUrl";
+            this.txbImgUrl.Size = new System.Drawing.Size(191, 27);
+            this.txbImgUrl.TabIndex = 10;
             // 
             // btnSave
             // 
@@ -145,6 +147,7 @@
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -174,7 +177,7 @@
             this.Controls.Add(this.Image);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txbImgUrl);
             this.Controls.Add(this.btnImage);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txbPrice);
@@ -206,7 +209,7 @@
         private TextBox txbPrice;
         private PictureBox pictureBox1;
         private Button btnImage;
-        private TextBox textBox1;
+        private TextBox txbImgUrl;
         private Button btnSave;
         private Button btnCancel;
         private Label Image;
