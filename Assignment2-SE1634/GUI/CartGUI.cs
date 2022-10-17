@@ -37,8 +37,6 @@ namespace Assignment2_SE1634.GUI
                 txbPrice.Text = price.ToString("0.###");
                 
             }
-            
-           
             dataGridView1.DataSource = cart;
         }
 
@@ -46,7 +44,8 @@ namespace Assignment2_SE1634.GUI
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
-            {   
+            {
+                
                 int albID = (int)dataGridView1.Rows[e.RowIndex].Cells["albumID"].Value;
                 Cart alb =  cart.Where(p => p.AlbumId == albID).FirstOrDefault();
                 int count = (int)dataGridView1.Rows[e.RowIndex].Cells["count"].Value;
@@ -69,11 +68,11 @@ namespace Assignment2_SE1634.GUI
                         music.SaveChanges();
                        
                     }
-                    else
+                    else if(count ==1)
                     {
                         music.Remove(alb);
                         music.SaveChanges();
-                       
+                        txbPrice.Text = "0";
                     }
 
                 }
@@ -93,5 +92,16 @@ namespace Assignment2_SE1634.GUI
             
 
         }
+
+        private void btnCheckout_Click(object sender, EventArgs e)
+        {
+            LoadCart();
+            if(cart.Count == 0)
+            {
+                MessageBox.Show("Your cart don't has any album, let's go shopping");
+            }
+            
+        }   
+        
     }
 }
