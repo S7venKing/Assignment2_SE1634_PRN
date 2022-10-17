@@ -1,7 +1,9 @@
 using Assignment2_SE1634.DAO;
 using Assignment2_SE1634.GUI;
 using Assignment2_SE1634.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Text;
 using System.Xml.Schema;
 
 namespace Assignment2_SE1634
@@ -14,14 +16,42 @@ namespace Assignment2_SE1634
         ArtistDAO artistDAO = new ArtistDAO();
         public List<Album> albums { get; set; }
         public int page { get; set; }
+        public string cartID { get; set; }
         public User user { get; set; }
+        MusicStoreContext music = new MusicStoreContext();
+        private string RandomString(int size)
+        {
+            StringBuilder sb = new StringBuilder();
+            char c;
+            Random rand = new Random();
+            for (int i = 0; i < size; i++)
+            {
+                c = Convert.ToChar(Convert.ToInt32(rand.Next(65, 87)));
+                sb.Append(c);
+            }
+
+
+            return sb.ToString().ToLower();
+
+            return sb.ToString();
+        }
         public UserGUI(User user)
         {
             InitializeComponent();
      
             this.user = user;
-            
-                if (this.user != null)
+            if (user != null)
+            {
+                cartID = user.UserName;
+
+            }
+            else
+            {
+                cartID = RandomString(30);
+                
+            }
+            MessageBox.Show(cartID);
+            if (this.user != null)
                 {
                     if(this.user.Role == 1)
                 {
@@ -39,7 +69,7 @@ namespace Assignment2_SE1634
                     lbAdmin.Visible = false;
                     lblLog.Text = "Login";
                     lblLog.Click += lbLogin_Click;
-
+                    
             }
             page = 1;
             LoadShop();
@@ -72,7 +102,8 @@ namespace Assignment2_SE1634
 
         void LoadShop()
         { 
-            MusicStoreContext music = new MusicStoreContext();
+
+            
             cbGenre.DataSource = music.Genres.ToList();
             cbGenre.DisplayMember = "Name";
             cbTitle.DataSource = music.Albums.ToList();
@@ -91,8 +122,6 @@ namespace Assignment2_SE1634
             albums = albumDAO.LoadAllAlbum();
             dataGridView1.DataSource = albumDAO.LoadAllAlbum();
         }
-
-
 
         void Page(int page,List<Album> listA)
         {
@@ -159,7 +188,8 @@ namespace Assignment2_SE1634
                 addCart.Size = new Size(158, 29);
                 addCart.Text = "Add to cart";
                 addCart.Name = "btnAddCart";
-                grb.Tag = album.AlbumId;   
+                addCart.Click += AddCart_Click;
+                addCart.Tag = album.AlbumId; 
                 grb.Text = album.Title;
                 price.Text = "$" + album.Price.ToString();
                 artist.Text = artistDAO.GetArtistByID(album.ArtistId).Name;
@@ -167,6 +197,48 @@ namespace Assignment2_SE1634
 
             }
         }
+
+        private void AddCart_Click(object? sender, EventArgs e)
+        {
+            MusicStoreContext music = new MusicStoreContext();
+  
+                Button add = (Button)sender;
+                List<Cart> list = new List<Cart>();
+                
+                list = music.Carts.Where(p => p.CartId == cartID).ToList();
+                Cart alb = list.Where(p => p.AlbumId == (int)add.Tag).FirstOrDefault();
+                if (alb != null)
+                {
+                    alb.Count += 1;
+                    music.Entry(alb).State = EntityState.Modified;
+                    music.SaveChanges();
+                }
+                else
+                {
+                    music.Carts.Add(new Cart()
+                    {
+                        CartId = cartID,
+                        AlbumId = (int)add.Tag,
+                        Count = 1,
+                        DateCreated = DateTime.Now,
+
+                    }) ;
+                    music.SaveChanges();
+                }
+              
+            }
+
+    
+
+        private void lbCart_Click(object sender, EventArgs e)
+        {
+                MessageBox.Show(cartID);
+                CartGUI carts = new CartGUI(cartID);
+                this.Hide();
+                carts.ShowDialog();
+                this.Show();
+        }
+
 
         private void btnNext_Click(object sender, EventArgs e)
         {
@@ -257,5 +329,7 @@ namespace Assignment2_SE1634
             albumAE.form = this;
 
         }
+
+    
     }
 }

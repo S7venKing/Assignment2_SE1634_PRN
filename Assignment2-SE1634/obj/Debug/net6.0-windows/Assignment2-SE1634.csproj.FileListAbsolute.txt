@@ -122,3 +122,4 @@ I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Ass
 I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2_SE1634.UserGUI.resources
 I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2_SE1634.GUI.AlbumAddEditGUI.resources
 I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2_SE1634.GUI.TestUpLoadImage.resources
+I:\GitHub\Assignment2_SE1634_PRN\Assignment2-SE1634\obj\Debug\net6.0-windows\Assignment2_SE1634.GUI.CartGUI.resources

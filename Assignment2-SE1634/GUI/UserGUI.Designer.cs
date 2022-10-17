@@ -319,6 +319,7 @@
             this.lbCart.Size = new System.Drawing.Size(36, 20);
             this.lbCart.TabIndex = 1;
             this.lbCart.Text = "Cart";
+            this.lbCart.Click += new System.EventHandler(this.lbCart_Click);
             // 
             // lbShopping
             // 

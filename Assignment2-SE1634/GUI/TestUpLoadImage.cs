@@ -46,6 +46,33 @@ namespace Assignment2_SE1634.GUI
             pictureBox2.ImageLocation = pictureBox1.ImageLocation;
 
         }
+
+        private void TestUpLoadImage_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = RandomString(20);
+        }
+
+        private string RandomString(int size)
+        {
+            StringBuilder sb = new StringBuilder();
+            char c;
+            Random rand = new Random();
+            for (int i = 0; i < size; i++)
+            {
+                c = Convert.ToChar(Convert.ToInt32(rand.Next(65, 87)));
+                sb.Append(c);
+            }
+          
+            
+                return sb.ToString().ToLower();
+            
+            return sb.ToString();
+        }
     }
     }
 

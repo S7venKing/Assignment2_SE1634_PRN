@@ -33,8 +33,14 @@ namespace Assignment2_SE1634.GUI
             this.id = id;
             LoadGUI();
         }
+        public AlbumAddEditGUI(string action)
+        {
+            InitializeComponent();
+            this.action = action;
+            LoadGUI();
+        }
 
-        void LoadGUI()
+       void LoadGUI()
         {
             
             cbGenre.DataSource = music.Genres.ToList();
@@ -53,7 +59,8 @@ namespace Assignment2_SE1634.GUI
                 pictureBox1.ImageLocation = Path.Combine(Application.StartupPath, $"Resources{album.AlbumUrl}");
                 txbImgUrl.Text = album.AlbumUrl;
             }
-           
+
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
