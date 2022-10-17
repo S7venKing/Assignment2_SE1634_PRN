@@ -346,6 +346,7 @@
             this.lblLog.Size = new System.Drawing.Size(56, 20);
             this.lblLog.TabIndex = 2;
             this.lblLog.Text = "Logout";
+            this.lblLog.Click += new System.EventHandler(this.lblLog_Click);
             // 
             // sqlConnection1
             // 

@@ -67,7 +67,7 @@ namespace Assignment2_SE1634.GUI
         {
             
             this.Close();
-            this.form.BindingData();
+            this.form.LoadShop();
             this.form.Show();
             
             
@@ -121,7 +121,7 @@ namespace Assignment2_SE1634.GUI
             
             music.SaveChanges();
             this.Close();
-            this.form.BindingData();
+            this.form.LoadShop();
             this.form.Show();
 
         }

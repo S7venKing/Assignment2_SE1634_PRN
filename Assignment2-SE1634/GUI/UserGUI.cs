@@ -82,7 +82,9 @@ namespace Assignment2_SE1634
             this.Hide();
             LoginGUI login = new LoginGUI();
             login.ShowDialog();
+            this.LoadShop();
             this.Show();
+            
             
 
         }
@@ -100,7 +102,7 @@ namespace Assignment2_SE1634
             
         }
 
-        void LoadShop()
+        public void LoadShop()
         { 
 
             
@@ -330,6 +332,9 @@ namespace Assignment2_SE1634
 
         }
 
-    
+        private void lblLog_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
