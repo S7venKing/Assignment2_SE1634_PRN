@@ -26,7 +26,7 @@ namespace Assignment2_SE1634.GUI
             LoadCart();
         }
 
-        void LoadCart()
+        public void LoadCart()
         {
             
             cart = carts.GetCartsByUser(this.username);
@@ -96,9 +96,24 @@ namespace Assignment2_SE1634.GUI
         private void btnCheckout_Click(object sender, EventArgs e)
         {
             LoadCart();
+            User user = music.Users.Where(p => p.UserName == this.username).FirstOrDefault();
+            string msg = "";
             if(cart.Count == 0)
             {
-                MessageBox.Show("Your cart don't has any album, let's go shopping");
+                MessageBox.Show("Your cart don't have any albums, return to shop to buy some albums");
+                btnCheckout.Enabled = false;
+            }
+            else if(user ==null)
+            {
+                MessageBox.Show("Guest can't check out, return to login and buy albums");
+                btnCheckout.Enabled = false;
+            }
+            else
+            {
+                CheckoutGUI gui = new CheckoutGUI(user,cart,this);
+                this.Hide();
+                gui.ShowDialog();
+                this.Show();
             }
             
         }   

@@ -2519,19 +2519,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Asus\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Asus\\OneDrive\\Documents\\GitHub\\Assignment2_SE1634_PRN\\Assignment2-SE1634\\Assignment2-SE1634.csproj",
+      "projectUniqueName": "I:\\GitHub\\Assignment2_SE1634_PRN\\Assignment2-SE1634\\Assignment2-SE1634.csproj",
       "projectName": "Assignment2-SE1634",
-      "projectPath": "C:\\Users\\Asus\\OneDrive\\Documents\\GitHub\\Assignment2_SE1634_PRN\\Assignment2-SE1634\\Assignment2-SE1634.csproj",
-      "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Asus\\OneDrive\\Documents\\GitHub\\Assignment2_SE1634_PRN\\Assignment2-SE1634\\obj\\",
+      "projectPath": "I:\\GitHub\\Assignment2_SE1634_PRN\\Assignment2-SE1634\\Assignment2-SE1634.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "I:\\GitHub\\Assignment2_SE1634_PRN\\Assignment2-SE1634\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2607,7 +2607,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }
