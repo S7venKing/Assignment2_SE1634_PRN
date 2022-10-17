@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\Resources\Images\placeholder.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Resources\Image\" />
     <Folder Include="Test\" />
   </ItemGroup>

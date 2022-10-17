@@ -38,6 +38,18 @@
             this.plnShop = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.albumId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genreId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.artistId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.titleAlbum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.albumUrl = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.artistDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cartsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.albumBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cbTitle = new System.Windows.Forms.ComboBox();
             this.btnAll = new System.Windows.Forms.Button();
@@ -48,18 +60,6 @@
             this.lblLog = new System.Windows.Forms.Label();
             this.sqlConnection1 = new Microsoft.Data.SqlClient.SqlConnection();
             this.lbAdmin = new System.Windows.Forms.Label();
-            this.albumIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genreIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.artistIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.albumUrlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.artistDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cartsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.plnShop.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.albumBindingSource)).BeginInit();
@@ -148,18 +148,19 @@
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Create a new Album";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click_1);
             // 
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.albumIdDataGridViewTextBoxColumn,
-            this.genreIdDataGridViewTextBoxColumn,
-            this.artistIdDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn,
-            this.albumUrlDataGridViewTextBoxColumn,
+            this.albumId,
+            this.genreId,
+            this.artistId,
+            this.titleAlbum,
+            this.price,
+            this.albumUrl,
             this.artistDataGridViewTextBoxColumn,
             this.genreDataGridViewTextBoxColumn,
             this.cartsDataGridViewTextBoxColumn,
@@ -167,141 +168,61 @@
             this.Edit,
             this.Delete});
             this.dataGridView1.DataSource = this.albumBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 147);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 133);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.Size = new System.Drawing.Size(975, 429);
             this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // albumBindingSource
+            // albumId
             // 
-            this.albumBindingSource.DataSource = typeof(Assignment2_SE1634.Models.Album);
+            this.albumId.DataPropertyName = "AlbumId";
+            this.albumId.HeaderText = "AlbumId";
+            this.albumId.MinimumWidth = 6;
+            this.albumId.Name = "albumId";
+            this.albumId.Width = 125;
             // 
-            // cbTitle
+            // genreId
             // 
-            this.cbTitle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbTitle.FormattingEnabled = true;
-            this.cbTitle.Location = new System.Drawing.Point(593, 16);
-            this.cbTitle.Name = "cbTitle";
-            this.cbTitle.Size = new System.Drawing.Size(258, 28);
-            this.cbTitle.TabIndex = 10;
+            this.genreId.DataPropertyName = "GenreId";
+            this.genreId.HeaderText = "GenreId";
+            this.genreId.MinimumWidth = 6;
+            this.genreId.Name = "genreId";
+            this.genreId.Width = 125;
             // 
-            // btnAll
+            // artistId
             // 
-            this.btnAll.Location = new System.Drawing.Point(387, 16);
-            this.btnAll.Name = "btnAll";
-            this.btnAll.Size = new System.Drawing.Size(119, 29);
-            this.btnAll.TabIndex = 9;
-            this.btnAll.Text = "All Products";
-            this.btnAll.UseVisualStyleBackColor = true;
-            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
+            this.artistId.DataPropertyName = "ArtistId";
+            this.artistId.HeaderText = "ArtistId";
+            this.artistId.MinimumWidth = 6;
+            this.artistId.Name = "artistId";
+            this.artistId.Width = 125;
             // 
-            // sqlCommandBuilder1
+            // titleAlbum
             // 
-            this.sqlCommandBuilder1.DataAdapter = null;
-            this.sqlCommandBuilder1.QuotePrefix = "[";
-            this.sqlCommandBuilder1.QuoteSuffix = "]";
+            this.titleAlbum.DataPropertyName = "Title";
+            this.titleAlbum.HeaderText = "Title";
+            this.titleAlbum.MinimumWidth = 6;
+            this.titleAlbum.Name = "titleAlbum";
+            this.titleAlbum.Width = 125;
             // 
-            // lbCart
+            // price
             // 
-            this.lbCart.AutoSize = true;
-            this.lbCart.Location = new System.Drawing.Point(126, 22);
-            this.lbCart.Name = "lbCart";
-            this.lbCart.Size = new System.Drawing.Size(36, 20);
-            this.lbCart.TabIndex = 1;
-            this.lbCart.Text = "Cart";
+            this.price.DataPropertyName = "Price";
+            this.price.HeaderText = "Price";
+            this.price.MinimumWidth = 6;
+            this.price.Name = "price";
+            this.price.Width = 125;
             // 
-            // lbShopping
+            // albumUrl
             // 
-            this.lbShopping.AutoSize = true;
-            this.lbShopping.Location = new System.Drawing.Point(12, 20);
-            this.lbShopping.Name = "lbShopping";
-            this.lbShopping.Size = new System.Drawing.Size(73, 20);
-            this.lbShopping.TabIndex = 0;
-            this.lbShopping.Text = "Shopping";
-            this.lbShopping.Click += new System.EventHandler(this.lbShopping_Click);
-            // 
-            // sqlCommand1
-            // 
-            this.sqlCommand1.CommandTimeout = 30;
-            this.sqlCommand1.Connection = null;
-            this.sqlCommand1.Notification = null;
-            this.sqlCommand1.Transaction = null;
-            // 
-            // lblLog
-            // 
-            this.lblLog.AutoSize = true;
-            this.lblLog.Location = new System.Drawing.Point(208, 22);
-            this.lblLog.Name = "lblLog";
-            this.lblLog.Size = new System.Drawing.Size(56, 20);
-            this.lblLog.TabIndex = 2;
-            this.lblLog.Text = "Logout";
-            // 
-            // sqlConnection1
-            // 
-            this.sqlConnection1.AccessToken = null;
-            this.sqlConnection1.Credential = null;
-            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
-            this.sqlConnection1.StatisticsEnabled = false;
-            // 
-            // lbAdmin
-            // 
-            this.lbAdmin.AutoSize = true;
-            this.lbAdmin.Location = new System.Drawing.Point(346, 22);
-            this.lbAdmin.Name = "lbAdmin";
-            this.lbAdmin.Size = new System.Drawing.Size(59, 20);
-            this.lbAdmin.TabIndex = 3;
-            this.lbAdmin.Text = "Albums";
-            this.lbAdmin.Click += new System.EventHandler(this.lbAdmin_Click);
-            // 
-            // albumIdDataGridViewTextBoxColumn
-            // 
-            this.albumIdDataGridViewTextBoxColumn.DataPropertyName = "AlbumId";
-            this.albumIdDataGridViewTextBoxColumn.HeaderText = "AlbumId";
-            this.albumIdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.albumIdDataGridViewTextBoxColumn.Name = "albumIdDataGridViewTextBoxColumn";
-            this.albumIdDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // genreIdDataGridViewTextBoxColumn
-            // 
-            this.genreIdDataGridViewTextBoxColumn.DataPropertyName = "GenreId";
-            this.genreIdDataGridViewTextBoxColumn.HeaderText = "GenreId";
-            this.genreIdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.genreIdDataGridViewTextBoxColumn.Name = "genreIdDataGridViewTextBoxColumn";
-            this.genreIdDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // artistIdDataGridViewTextBoxColumn
-            // 
-            this.artistIdDataGridViewTextBoxColumn.DataPropertyName = "ArtistId";
-            this.artistIdDataGridViewTextBoxColumn.HeaderText = "ArtistId";
-            this.artistIdDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.artistIdDataGridViewTextBoxColumn.Name = "artistIdDataGridViewTextBoxColumn";
-            this.artistIdDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // albumUrlDataGridViewTextBoxColumn
-            // 
-            this.albumUrlDataGridViewTextBoxColumn.DataPropertyName = "AlbumUrl";
-            this.albumUrlDataGridViewTextBoxColumn.HeaderText = "AlbumUrl";
-            this.albumUrlDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.albumUrlDataGridViewTextBoxColumn.Name = "albumUrlDataGridViewTextBoxColumn";
-            this.albumUrlDataGridViewTextBoxColumn.Width = 125;
+            this.albumUrl.DataPropertyName = "AlbumUrl";
+            this.albumUrl.HeaderText = "AlbumUrl";
+            this.albumUrl.MinimumWidth = 6;
+            this.albumUrl.Name = "albumUrl";
+            this.albumUrl.Width = 125;
             // 
             // artistDataGridViewTextBoxColumn
             // 
@@ -361,6 +282,88 @@
             this.Delete.UseColumnTextForButtonValue = true;
             this.Delete.Width = 125;
             // 
+            // albumBindingSource
+            // 
+            this.albumBindingSource.DataSource = typeof(Assignment2_SE1634.Models.Album);
+            // 
+            // cbTitle
+            // 
+            this.cbTitle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbTitle.FormattingEnabled = true;
+            this.cbTitle.Location = new System.Drawing.Point(593, 16);
+            this.cbTitle.Name = "cbTitle";
+            this.cbTitle.Size = new System.Drawing.Size(258, 28);
+            this.cbTitle.TabIndex = 10;
+            // 
+            // btnAll
+            // 
+            this.btnAll.Location = new System.Drawing.Point(387, 16);
+            this.btnAll.Name = "btnAll";
+            this.btnAll.Size = new System.Drawing.Size(119, 29);
+            this.btnAll.TabIndex = 9;
+            this.btnAll.Text = "All Products";
+            this.btnAll.UseVisualStyleBackColor = true;
+            this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
+            // 
+            // sqlCommandBuilder1
+            // 
+            this.sqlCommandBuilder1.DataAdapter = null;
+            this.sqlCommandBuilder1.QuotePrefix = "[";
+            this.sqlCommandBuilder1.QuoteSuffix = "]";
+            // 
+            // lbCart
+            // 
+            this.lbCart.AutoSize = true;
+            this.lbCart.Location = new System.Drawing.Point(126, 22);
+            this.lbCart.Name = "lbCart";
+            this.lbCart.Size = new System.Drawing.Size(36, 20);
+            this.lbCart.TabIndex = 1;
+            this.lbCart.Text = "Cart";
+            this.lbCart.Click += new System.EventHandler(this.lbCart_Click);
+            // 
+            // lbShopping
+            // 
+            this.lbShopping.AutoSize = true;
+            this.lbShopping.Location = new System.Drawing.Point(12, 20);
+            this.lbShopping.Name = "lbShopping";
+            this.lbShopping.Size = new System.Drawing.Size(73, 20);
+            this.lbShopping.TabIndex = 0;
+            this.lbShopping.Text = "Shopping";
+            this.lbShopping.Click += new System.EventHandler(this.lbShopping_Click);
+            // 
+            // sqlCommand1
+            // 
+            this.sqlCommand1.CommandTimeout = 30;
+            this.sqlCommand1.Connection = null;
+            this.sqlCommand1.Notification = null;
+            this.sqlCommand1.Transaction = null;
+            // 
+            // lblLog
+            // 
+            this.lblLog.AutoSize = true;
+            this.lblLog.Location = new System.Drawing.Point(208, 22);
+            this.lblLog.Name = "lblLog";
+            this.lblLog.Size = new System.Drawing.Size(56, 20);
+            this.lblLog.TabIndex = 2;
+            this.lblLog.Text = "Logout";
+            // 
+            // sqlConnection1
+            // 
+            this.sqlConnection1.AccessToken = null;
+            this.sqlConnection1.Credential = null;
+            this.sqlConnection1.FireInfoMessageEventOnUserErrors = false;
+            this.sqlConnection1.StatisticsEnabled = false;
+            // 
+            // lbAdmin
+            // 
+            this.lbAdmin.AutoSize = true;
+            this.lbAdmin.Location = new System.Drawing.Point(346, 22);
+            this.lbAdmin.Name = "lbAdmin";
+            this.lbAdmin.Size = new System.Drawing.Size(59, 20);
+            this.lbAdmin.TabIndex = 3;
+            this.lbAdmin.Text = "Albums";
+            this.lbAdmin.Click += new System.EventHandler(this.lbAdmin_Click);
+            // 
             // UserGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -415,5 +418,11 @@
         private DataGridViewTextBoxColumn orderDetailsDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn Edit;
         private DataGridViewButtonColumn Delete;
+        private DataGridViewTextBoxColumn albumId;
+        private DataGridViewTextBoxColumn genreId;
+        private DataGridViewTextBoxColumn artistId;
+        private DataGridViewTextBoxColumn titleAlbum;
+        private DataGridViewTextBoxColumn price;
+        private DataGridViewTextBoxColumn albumUrl;
     }
     }
