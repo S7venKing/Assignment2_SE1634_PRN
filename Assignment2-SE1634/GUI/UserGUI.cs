@@ -105,7 +105,6 @@ namespace Assignment2_SE1634
         public void LoadShop()
         { 
 
-            
             cbGenre.DataSource = music.Genres.ToList();
             cbGenre.DisplayMember = "Name";
             cbTitle.DataSource = music.Albums.ToList();
@@ -113,7 +112,7 @@ namespace Assignment2_SE1634
             cbTitle.ValueMember = "Title";
             cbTitle.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbTitle.AutoCompleteMode = AutoCompleteMode.SuggestAppend; 
-            flpnShop.Location = new Point(22, 150);
+            flpnShop.Location = new Point(35, 150);
             flpnShop.Size = new Size(941, 338);
             BindingData();
             Page(page,albums); 
@@ -227,6 +226,7 @@ namespace Assignment2_SE1634
                     }) ;
                     music.SaveChanges();
                 }
+            MessageBox.Show($"Add Product ID {(int)add.Tag} to cart");
               
             }
 

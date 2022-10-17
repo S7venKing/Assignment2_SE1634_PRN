@@ -29,8 +29,7 @@ namespace Assignment2_SE1634.GUI
                 this.Hide();
                 UserGUI userGUI = new UserGUI(user);
                 userGUI.ShowDialog();
-                
-                 
+
             }
             else
             {

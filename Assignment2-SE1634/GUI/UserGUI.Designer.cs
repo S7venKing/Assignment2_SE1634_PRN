@@ -94,7 +94,7 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(857, 16);
+            this.btnSearch.Location = new System.Drawing.Point(935, 12);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(119, 31);
             this.btnSearch.TabIndex = 5;
@@ -104,7 +104,7 @@
             // 
             // btnPrev
             // 
-            this.btnPrev.Location = new System.Drawing.Point(28, 533);
+            this.btnPrev.Location = new System.Drawing.Point(17, 575);
             this.btnPrev.Name = "btnPrev";
             this.btnPrev.Size = new System.Drawing.Size(94, 29);
             this.btnPrev.TabIndex = 7;
@@ -114,7 +114,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(143, 533);
+            this.btnNext.Location = new System.Drawing.Point(147, 575);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(94, 29);
             this.btnNext.TabIndex = 8;
@@ -136,7 +136,7 @@
             this.plnShop.Controls.Add(this.cbGenre);
             this.plnShop.Location = new System.Drawing.Point(12, 65);
             this.plnShop.Name = "plnShop";
-            this.plnShop.Size = new System.Drawing.Size(1007, 579);
+            this.plnShop.Size = new System.Drawing.Size(1078, 615);
             this.plnShop.TabIndex = 1;
             this.plnShop.Visible = false;
             // 
@@ -172,7 +172,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(975, 429);
+            this.dataGridView1.Size = new System.Drawing.Size(1056, 471);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -290,7 +290,7 @@
             // 
             this.cbTitle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbTitle.FormattingEnabled = true;
-            this.cbTitle.Location = new System.Drawing.Point(593, 16);
+            this.cbTitle.Location = new System.Drawing.Point(662, 13);
             this.cbTitle.Name = "cbTitle";
             this.cbTitle.Size = new System.Drawing.Size(258, 28);
             this.cbTitle.TabIndex = 10;
@@ -369,7 +369,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1030, 725);
+            this.ClientSize = new System.Drawing.Size(1097, 746);
             this.Controls.Add(this.lbAdmin);
             this.Controls.Add(this.lblLog);
             this.Controls.Add(this.lbShopping);
